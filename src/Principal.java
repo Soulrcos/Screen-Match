@@ -1,19 +1,30 @@
 import br.com.alura.screenmatch.modelo.Filme;
+import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
+import br.com.alura.screenmatch.modelo.Serie;
 
 public class Principal {
     public static void main(String[] args) {
-        Filme meuFilme = new Filme();
-        meuFilme.nome = "Ta dando onda";
-        meuFilme.sinopse = "Surfar é a atividade do pinguim adolescente Cody Maverick. Acompanhado por uma equipe de filmagem, " +
-                "ele deixa sua casa na Antárdida para ir à Ilha de Pen Gu participar do torneio Big Z Memorial Surf Off. Cody acredita " +
-                "que ganhando a competição terá o respeito e a admiração de todos.";
+        Filme oBichoVaiPegar = new Filme();
+        Filme segredoDosAnimais = new Filme();
+        Serie rickAndMorty = new Serie();
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
 
-        meuFilme.exibeFichaTecnica();
-        meuFilme.avalia(8.5);
-        meuFilme.avalia(5);
-        meuFilme.avalia(10);
-        System.out.println(meuFilme.obtemMedia());
-        System.out.println(meuFilme.getTotalAvaliacoes());
+        rickAndMorty.setNome("Rick and Morty");
+        rickAndMorty.setMinutosPorEpisodio(24);
+        rickAndMorty.setTemporadas(3);
+        rickAndMorty.setEpisodiosPorTemporada(15);
+
+        oBichoVaiPegar.setNome("O bicho vai pegar");
+        oBichoVaiPegar.setDuracaoEmMinutos(201);
+
+        segredoDosAnimais.setNome("O Segredo dos Animais");
+        segredoDosAnimais.setDuracaoEmMinutos(127);
+
+        calculadora.inclui(segredoDosAnimais);
+        calculadora.inclui(oBichoVaiPegar);
+        calculadora.inclui(rickAndMorty);
+        System.out.println(calculadora.retornaHora() + " horas e " + calculadora.retornaMinutos() + " minutos");
+
 
     }
 }
