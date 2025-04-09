@@ -8,26 +8,21 @@ import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) {
-        Filme oBichoVaiPegar = new Filme();
-        Filme segredoDosAnimais = new Filme();
-        Serie rickAndMorty = new Serie();
+        Filme oBichoVaiPegar = new Filme("O bicho vai pegar", 2006);
+        Filme segredoDosAnimais = new Filme("O Segredo dos Animais", 2006);
+        Serie rickAndMorty = new Serie("Rick and Morty", 2013);
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
         Episodio episodio = new Episodio();
 
-        rickAndMorty.setNome("Rick and Morty");
         rickAndMorty.setMinutosPorEpisodio(24);
         rickAndMorty.setTemporadas(3);
         rickAndMorty.setEpisodiosPorTemporada(15);
 
-        oBichoVaiPegar.setNome("O bicho vai pegar");
-        oBichoVaiPegar.setAnoDeLancamento(2006);
         oBichoVaiPegar.avalia(6);
         oBichoVaiPegar.avalia(6);
         oBichoVaiPegar.avalia(6);
         oBichoVaiPegar.setDuracaoEmMinutos(201);
 
-        segredoDosAnimais.setNome("O Segredo dos Animais");
-        segredoDosAnimais.setAnoDeLancamento(2006);
         segredoDosAnimais.setDuracaoEmMinutos(127);
 
         episodio.setNumero(1);
@@ -46,10 +41,8 @@ public class Principal {
 
 
 
-        var filmeMarcos = new Filme();
+        var filmeMarcos = new Filme("Ta dando onda", 2009);
         filmeMarcos.setDuracaoEmMinutos(107);
-        filmeMarcos.setNome("Ta dando onda");
-        filmeMarcos.setAnoDeLancamento(2009);
         filmeMarcos.avalia(10);
 
         ArrayList<Filme> listaDeFilmes = new ArrayList<>();
