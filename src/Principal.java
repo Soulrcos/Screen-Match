@@ -4,6 +4,8 @@ import br.com.alura.screenmatch.modelo.Filme;
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.modelo.Serie;
 
+import java.util.ArrayList;
+
 public class Principal {
     public static void main(String[] args) {
         Filme oBichoVaiPegar = new Filme();
@@ -18,12 +20,14 @@ public class Principal {
         rickAndMorty.setEpisodiosPorTemporada(15);
 
         oBichoVaiPegar.setNome("O bicho vai pegar");
+        oBichoVaiPegar.setAnoDeLancamento(2006);
         oBichoVaiPegar.avalia(6);
         oBichoVaiPegar.avalia(6);
         oBichoVaiPegar.avalia(6);
         oBichoVaiPegar.setDuracaoEmMinutos(201);
 
         segredoDosAnimais.setNome("O Segredo dos Animais");
+        segredoDosAnimais.setAnoDeLancamento(2006);
         segredoDosAnimais.setDuracaoEmMinutos(127);
 
         episodio.setNumero(1);
@@ -39,5 +43,21 @@ public class Principal {
         FiltroRecomendacao filtro = new FiltroRecomendacao();
         filtro.filtra(oBichoVaiPegar);
         filtro.filtra(episodio);
+
+
+
+        var filmeMarcos = new Filme();
+        filmeMarcos.setDuracaoEmMinutos(107);
+        filmeMarcos.setNome("Ta dando onda");
+        filmeMarcos.setAnoDeLancamento(2009);
+        filmeMarcos.avalia(10);
+
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(filmeMarcos);
+        listaDeFilmes.add(oBichoVaiPegar);
+        listaDeFilmes.add(segredoDosAnimais);
+        System.out.println("Tamanho lista: " + listaDeFilmes.size());
+        System.out.println("Primeiro filme: " + listaDeFilmes.getFirst().getNome());
+        System.out.println(listaDeFilmes);
     }
 }
