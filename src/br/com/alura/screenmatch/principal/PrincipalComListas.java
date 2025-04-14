@@ -29,7 +29,7 @@ public class PrincipalComListas {
             }
         }
 
-        ArrayList<String> buscaPorArtista = new ArrayList<>();
+        List<String> buscaPorArtista = new LinkedList<>();
         buscaPorArtista.add("Jason Momoa");
         buscaPorArtista.add("The Rock");
         buscaPorArtista.add("Terry Crews");
@@ -47,5 +47,6 @@ public class PrincipalComListas {
         assistidos.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
 
         System.out.println("Titulos ordenados por lancamento: \n" + assistidos);
+
     }
 }
