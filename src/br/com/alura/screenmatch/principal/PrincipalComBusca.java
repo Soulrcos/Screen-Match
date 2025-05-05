@@ -26,8 +26,11 @@ public class PrincipalComBusca {
                 .send(request, HttpResponse.BodyHandlers.ofString());
 
         Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
-        //Titulo meuTitulo = gson.fromJson(response.body(), Titulo.class);
+
         TituloOmdb meuTituloOmdb = gson.fromJson(response.body(), TituloOmdb.class);
-        System.out.println(meuTituloOmdb);
+
+        Titulo meuTitulo = new Titulo(meuTituloOmdb);
+
+        System.out.println(meuTitulo);
     }
 }
