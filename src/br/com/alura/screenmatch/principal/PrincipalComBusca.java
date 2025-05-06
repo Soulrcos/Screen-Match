@@ -19,18 +19,25 @@ public class PrincipalComBusca {
         System.out.println("Digite um filme para busca: ");
         var leitura = scanner.nextLine();
         String resposta = leitura.replaceAll(" ","+");
+        try{
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://www.omdbapi.com/?t="+resposta+"&apikey=8cdc00b0")).build();
+            HttpResponse<String> response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://www.omdbapi.com/?t="+resposta+"&apikey=8cdc00b0")).build();
-        HttpResponse<String> response = client
-                .send(request, HttpResponse.BodyHandlers.ofString());
+            Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
 
-        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+            TituloOmdb meuTituloOmdb = gson.fromJson(response.body(), TituloOmdb.class);
 
-        TituloOmdb meuTituloOmdb = gson.fromJson(response.body(), TituloOmdb.class);
+            Titulo meuTitulo = new Titulo(meuTituloOmdb);
+            System.out.println(meuTitulo);
+        } catch (NumberFormatException e){
+            System.out.println("Erro: " + e.getMessage());
+        } catch (IllegalArgumentException e){
+            System.out.println("Erro no argumento de busca: " + e.getMessage());
+        } catch (StringIndexOutOfBoundsException e){
+            System.out.println("Erro no nome do filme: " + e.getMessage());
+        }
 
-        Titulo meuTitulo = new Titulo(meuTituloOmdb);
-
-        System.out.println(meuTitulo);
     }
 }
