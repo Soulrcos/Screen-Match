@@ -18,7 +18,8 @@ public class PrincipalComBusca {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite um filme para busca: ");
         var leitura = scanner.nextLine();
-        String resposta = leitura.replaceAll(" ","+");
+        String resposta = leitura.trim().replaceAll("\\s+","+");
+
         try{
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://www.omdbapi.com/?t="+resposta+"&apikey=8cdc00b0")).build();
@@ -35,9 +36,6 @@ public class PrincipalComBusca {
             System.out.println("Erro: " + e.getMessage());
         } catch (IllegalArgumentException e){
             System.out.println("Erro no argumento de busca: " + e.getMessage());
-        } catch (StringIndexOutOfBoundsException e){
-            System.out.println("Erro no nome do filme: " + e.getMessage());
         }
-
     }
 }

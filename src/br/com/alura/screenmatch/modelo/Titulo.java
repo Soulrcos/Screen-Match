@@ -17,7 +17,13 @@ public class Titulo implements Comparable<Titulo>{
     public Titulo(TituloOmdb meuTituloOmdb) {
         this.nome = meuTituloOmdb.title();
         this.anoDeLancamento = Integer.valueOf(meuTituloOmdb.year());
-        this.duracaoEmMinutos = Integer.valueOf(meuTituloOmdb.runtime().substring(0, meuTituloOmdb.runtime().length()-4));
+        if (meuTituloOmdb.runtime().contains("min")){
+            this.duracaoEmMinutos = Integer.valueOf(meuTituloOmdb.runtime().substring(0, meuTituloOmdb.runtime().length() - 4));
+        }
+        else {
+            this.duracaoEmMinutos = 0;
+        }
+
     }
 
     public void setNome(String nome) {
