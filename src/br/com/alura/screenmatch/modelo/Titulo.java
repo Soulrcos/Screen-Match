@@ -1,5 +1,7 @@
 package br.com.alura.screenmatch.modelo;
 
+import br.com.alura.screenmatch.excecao.ErroDeConversaoDeAnoException;
+
 public class Titulo implements Comparable<Titulo>{
     private String nome;
     private int anoDeLancamento;
@@ -16,7 +18,17 @@ public class Titulo implements Comparable<Titulo>{
 
     public Titulo(TituloOmdb meuTituloOmdb) {
         this.nome = meuTituloOmdb.title();
+
+        try {
+            if (meuTituloOmdb.year().length() > 4) {
+                throw new ErroDeConversaoDeAnoException("Não consegui converter o ano.");
+            }
+        } catch (Exception e) {
+            System.out.println("Não foi possível encontrar seu filme!");
+        }
+
         this.anoDeLancamento = Integer.valueOf(meuTituloOmdb.year());
+
         if (meuTituloOmdb.runtime().contains("min")){
             this.duracaoEmMinutos = Integer.valueOf(meuTituloOmdb.runtime().substring(0, meuTituloOmdb.runtime().length() - 4));
         }
@@ -93,6 +105,6 @@ public class Titulo implements Comparable<Titulo>{
     public String toString() {
         return "nome: " + nome +
                 "\nanoDeLancamento: " + anoDeLancamento +
-                "\nDuração: " + duracaoEmMinutos + " min";
+                "\nDuração: " + duracaoEmMinutos + " min\n";
     }
 }
