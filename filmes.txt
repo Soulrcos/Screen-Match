@@ -1,26 +1,25 @@
-[nome: Spiderman
-anoDeLancamento: 1990
-Duração: 5 min
-
-
- nome: The Amazing Spiderman 2 Webb Cut
-anoDeLancamento: 2021
-Duração: 0 min
-
-
- nome: Fighting
-
- Flying and Driving: The Stunts of Spiderman 3
+[
+nome: Fighting, Flying and Driving: The Stunts of Spiderman 3
 anoDeLancamento: 2007
 Duração: 19 min
-
-
- nome: The Amazing Spiderman 2 Webb Cut
-anoDeLancamento: 2021
+ 
+nome: The Avengers
+anoDeLancamento: 2012
+Duração: 143 min
+ 
+nome: M3GAN 2.0
+anoDeLancamento: 2025
 Duração: 0 min
-
-
- nome: The Amazing Spiderman 2 Webb Cut
-anoDeLancamento: 2021
+ 
+nome: Jurassic World: Rebirth
+anoDeLancamento: 2025
 Duração: 0 min
+ 
+nome: Superman
+anoDeLancamento: 1978
+Duração: 143 min
+ 
+nome: The Naked Gun
+anoDeLancamento: 2025
+Duração: 85 min
 ]

@@ -22,6 +22,7 @@ public class PrincipalComBusca {
         Scanner scanner = new Scanner(System.in);
         String leitura = "";
         List<Titulo> titulos = new ArrayList<>();
+        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).setPrettyPrinting().create();
 
         while (!leitura.equalsIgnoreCase("sair")) {
 
@@ -39,8 +40,6 @@ public class PrincipalComBusca {
                 HttpResponse<String> response = client
                         .send(request, HttpResponse.BodyHandlers.ofString());
 
-                Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
-
                 TituloOmdb meuTituloOmdb = gson.fromJson(response.body(), TituloOmdb.class);
 
                 Titulo meuTitulo = new Titulo(meuTituloOmdb);
@@ -54,8 +53,8 @@ public class PrincipalComBusca {
                 System.out.println(e.getMessage());
             }
         }
-        FileWriter filmesTXT = new FileWriter("filmes.txt");
-        filmesTXT.append(titulos.toString().trim().replaceAll(",","\n\n"));
-        filmesTXT.close();
+        FileWriter filmesJSON = new FileWriter("filmes.json");
+        filmesJSON.write(gson.toJson(titulos));
+        filmesJSON.close();
     }
 }
